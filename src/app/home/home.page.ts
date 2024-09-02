@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +7,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  goToRecuperar() {
+    console.log('click');
+
+    this.router.navigate(['/recuperar'])
+  }
+
+  goToLink(url: string) {
+    this.router.navigate([`/${url}`])
+    // this.router.navigate(['/' + url])
+  }
+
+
+  goToPage(){
+    this.router.navigate(['/principal'], {queryParams: {nombre: 'Elias'}})
+  }
 }

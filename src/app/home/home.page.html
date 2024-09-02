@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      LOGIN
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,46 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">LOGIN</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
+
+
+
     <strong>Ready to create an app?</strong>
+
+
+    <ion-item>
+      <ion-input label="Number input" type="number" placeholder="000"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Password input" type="password" value="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Email input" type="email" placeholder="email@domain.com"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" [routerLink]="['/recuperar']">Recuperar contraseña</ion-label>
+    </ion-item>
+
+    <ion-button id="btn-iniciar" expand="block" color="warning" (click)="goToRecuperar()">
+      INGRESAR
+    </ion-button> 
+
+
+    <ion-button id="btn-iniciar" expand="block" color="warning" (click)="goToLink('/')">
+      INGRESAR
+    </ion-button> 
+
+    <ion-button id="btn-iniciar" expand="block" color="warning" (click)="goToPage()">
+      PRINCIPAL
+    </ion-button> 
+
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>
