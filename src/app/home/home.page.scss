@@ -28,8 +28,18 @@
 
 #btn-iniciar {
   margin-top: 1rem;
-  width: 110px;
+  width: 7rem;
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 1rem;
+}
+
+#recuperarPass{
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#recuperarPass:hover{
+  color: #0056b3;
+  border-bottom: 1px solid #0056b3;
 }
