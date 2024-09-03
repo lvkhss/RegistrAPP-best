@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PrincipalPage implements OnInit {
 
-  nombre: string = "Benjamin";
+  nombre: string = "llll";
 
   constructor(private route: ActivatedRoute) { }
 

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
+  usuario: string = '';
+
   constructor(private router: Router) {}
 
   goToRecuperar() {
@@ -22,6 +24,6 @@ export class HomePage {
 
 
   goToPage(){
-    this.router.navigate(['/principal'], {queryParams: {nombre: 'Elias'}})
+    this.router.navigate(['/principal'], {queryParams: {nombre: this.usuario}})
   }
 }

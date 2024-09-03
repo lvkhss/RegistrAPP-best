@@ -1,16 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>principal</ion-title>
+    <ion-title>Principal</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">principal</ion-title>
+      <ion-title size="large">Principal</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-item>
+    <ion-label color="primary" [routerLink]="['/']">Cerrar Sesión</ion-label>
+  </ion-item>
 
-
-  <h4>{{ nombre }}</h4>
+  <h4 id="centrar">Bienvenido {{ nombre }}</h4>
 </ion-content>
