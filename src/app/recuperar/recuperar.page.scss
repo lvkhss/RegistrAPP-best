@@ -1,0 +1,40 @@
+
+
+.contenedor {
+    border-radius: 19rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .contenedor ion-item {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .contenedor ion-input {
+    width: 100%;
+  }
+  
+  .contenedor ion-label {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .contenedor ion-label:hover {
+    border-bottom: 1px solid;
+  }
+  
+  #btn-iniciar {
+    margin-top: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  #btn-volver {
+    text-align: center;
+  }
