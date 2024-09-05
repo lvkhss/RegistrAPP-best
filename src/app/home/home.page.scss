@@ -34,11 +34,8 @@
   margin-bottom: 1rem;
 }
 
-#recuperarPass{
+#botones-login{
+  text-align: center;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: color 0.3s;
-}
-
-#recuperarPass:hover{
-  border-bottom: 1px solid;
 }
