@@ -8,13 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PrincipalPage implements OnInit {
 
-  nombre: string = "llll";
+  nombre: string = "";
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.nombre = params['nombre'] || 'No existe';
+      this.nombre = params['nombre'] || 'Invitado';
     })
   }
 }
