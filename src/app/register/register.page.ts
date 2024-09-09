@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -7,24 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
+  username: string = '';
+  password: string = '';
 
-  usuario: string = '';
+  constructor(private navCtrl: NavController) {}
 
-  constructor(private router: Router) {}
+  register() {
+    const user = {
+      username: this.username,
+      password: this.password
+    };
 
-  goToLogin() {
-    console.log('click');
-
-    this.router.navigate(['/home'])
-  }
-
-  goToLink(url: string) {
-    this.router.navigate([`/${url}`])
-    // this.router.navigate(['/' + url])
-  }
-
-
-  goToPage(){
-    this.router.navigate(['/principal'], {queryParams: {nombre: this.usuario}})
+    localStorage.setItem('user', JSON.stringify(user));
+    this.navCtrl.navigateRoot('/home');
   }
 }
