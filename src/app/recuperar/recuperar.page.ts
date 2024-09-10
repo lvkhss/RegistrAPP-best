@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecuperarPage implements OnInit {
 
+  // variable user y password
+  usuario: string = '';
+  contra: string = '';
+
   constructor() { }
 
   ngOnInit() {
