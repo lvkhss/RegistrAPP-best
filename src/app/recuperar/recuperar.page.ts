@@ -10,7 +10,7 @@ export class RecuperarPage {
   username: string = '';
   newPassword: string = '';
 
-
+  constructor(private navCtrl: NavController) {}
 
   updatePassword() {
     const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
