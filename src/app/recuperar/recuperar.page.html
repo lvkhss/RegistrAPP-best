@@ -3,31 +3,28 @@
 
     <ion-title>Recuperar Contraseña</ion-title>
 
-    <ion-title>Recuperar</ion-title>
 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-
-  <div class="contenedor">
-    <ion-item>
-      <ion-input [(ngModel)]="usuario" label="Usuario" type="text" labelPlacement="floating"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="contra" label="Contraseña Nueva" type="password" labelPlacement="floating"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="contra" label="Confirmar Contraseña" type="password" labelPlacement="floating"></ion-input>
-    </ion-item>
-
-    <ion-item id="btn-volver">
-      <ion-label color="primary" [routerLink]="['/']">Volver</ion-label>
-    </ion-item>
-
-    <ion-button id="btn-iniciar" expand="block" color="warning">
-      Recuperar Contraseña
-    </ion-button>
-  </div>
-</ion-content>
+  <ion-content [fullscreen]="true">
+    <div class="contenedor">
+      <ion-item>
+        <ion-input [(ngModel)]="usuario" label="Usuario" type="text" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="contra" label="Contraseña Nueva" type="password" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="contra" label="Confirmar Contraseña" type="password" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+      <ion-button id="btn-volver" expand="block" color="primary" [routerLink]="['/']">
+        Volver
+      </ion-button>
+  
+      <ion-button id="btn-iniciar" expand="block" color="warning">
+        Recuperar Contraseña
+      </ion-button>
+    </div>
+  </ion-content>
