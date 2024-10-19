@@ -16,9 +16,20 @@
   </ion-item>
 
   <h4 id="centrar">Bienvenido {{ username }}</h4>
-  <ion-item>
-    <div>
-      <qrcode [qrdata]="'Your data string'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    </div>
-  </ion-item>
+  
+  <ion-list>
+    <ion-item button (click)="toggleMenu()" class="lista-clases">
+      <ion-label id="hola">{{ selectedClass ? selectedClass : 'Clases' }}</ion-label>
+    </ion-item>
+    <ion-list *ngIf="menuOpen">
+      <ion-item button (click)="seleccionarClase('Programacion')">
+        <ion-label>Programación</ion-label>
+      </ion-item>
+      <ion-item button (click)="seleccionarClase('Base de Datos')">
+        <ion-label>Base de Datos</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+
+  <qrcode *ngIf="qrCodeData" [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </ion-content>

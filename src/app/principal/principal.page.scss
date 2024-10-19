@@ -1,6 +1,19 @@
 #centrar {
-    text-align: center;
-    margin-top: 4rem;
+  text-align: center;
+  margin-top: 4rem;
+}
 
-  }
-  
+.lista-clases {
+  --background: green; /* Cambia a cualquier tono de verde que prefieras */
+  --color: white; /* Para que el texto sea legible */
+  border-radius: 15px;
+  font-size: 20px;
+  max-width: 200px;
+  margin-left: 15px;
+  color: white; 
+  display: flex;
+  justify-content: center; 
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
