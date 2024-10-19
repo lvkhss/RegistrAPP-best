@@ -8,13 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PrincipalPage implements OnInit {
 
-  nombre: string = "";
+  username: string = "";
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.nombre = params['nombre'] || 'Invitado';
-    })
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.username = user.username || 'Invitado';
   }
 }
