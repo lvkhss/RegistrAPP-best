@@ -7,7 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./principal.page.scss'],
 })
 export class PrincipalPage implements OnInit {
-  nombre: string = "";
+
+  username: string = "";
   menuOpen: boolean = false;
   selectedClass: string = '';
   qrCodeData: string = '';
@@ -15,10 +16,6 @@ export class PrincipalPage implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.nombre = params['nombre'] || 'Invitado';
-    });
-  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -27,6 +24,10 @@ export class PrincipalPage implements OnInit {
   seleccionarClase(clase: string) {
     this.selectedClass = clase;
     this.qrCodeData = `Asistencia para la clase de ${clase}`;
-    this.menuOpen = false; // Cierra el menú después de seleccionar una clase
+    this.menuOpen = false; 
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.username = user.username || 'Invitado';
+
   }
 }
