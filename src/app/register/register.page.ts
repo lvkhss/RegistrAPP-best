@@ -15,6 +15,11 @@ export class RegisterPage {
   constructor(private navCtrl: NavController) {}
 
   register() {
+    if (!this.userType) {
+      alert('Por favor, selecciona un tipo de usuario.');
+      return;
+    }
+
     const user = {
       username: this.username,
       password: this.password,
@@ -22,7 +27,12 @@ export class RegisterPage {
     };
 
     localStorage.setItem('user', JSON.stringify(user));
-    this.navCtrl.navigateRoot('/home');
+    
+    if (this.userType === 'Profesor') {
+      this.navCtrl.navigateRoot('/principal');
+    } else if (this.userType === 'estudiante') {
+      this.navCtrl.navigateRoot('/principal-estudiantes');
+    }
   }
 
   selectUserType(type: string) {

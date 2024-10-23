@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-principal',
@@ -13,7 +14,7 @@ export class PrincipalPage implements OnInit {
   selectedClass: string = '';
   qrCodeData: string = '';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private navCtrl: NavController) { }
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -37,5 +38,10 @@ export class PrincipalPage implements OnInit {
   deseleccionarClase() {
     this.selectedClass = '';
     this.qrCodeData = '';
+  }
+
+  logout() {
+    localStorage.setItem('ingresado', 'false');
+    this.navCtrl.navigateRoot('/home'); 
   }
 }

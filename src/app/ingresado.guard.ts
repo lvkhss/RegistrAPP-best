@@ -5,18 +5,35 @@ import { inject } from '@angular/core';
 export const ingresadoGuard: CanActivateFn = (route, state) => {
   const navCtrl = inject(NavController);
   const isIngresado = localStorage.getItem('ingresado') === 'true';
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const userType = user.userType;
   const restrictedRoutes = ['/home', '/register', '/recuperar'];
 
   if (isIngresado) {
-    if (restrictedRoutes.includes(state.url)) {
-      navCtrl.navigateRoot('/principal');
-      return false;
+    if (userType === 'Profesor') {
+      if (state.url === '/principal-estudiantes') {
+        navCtrl.navigateRoot('/principal');
+        return false;
+      }
+      return true;
     }
-    return true;
-  // } if (condition) {
-    
-  // 
+
+    if (userType === 'Estudiante') {
+      if (state.url === '/principal') {
+        navCtrl.navigateRoot('/principal-estudiantes');
+        return false;
+      }
+      return true;
+    }
+
+    navCtrl.navigateRoot('/home');
+    return false;
+
   } else {
-    return true;
-  } 
+    if (restrictedRoutes.includes(state.url)) {
+      return true;
+    }
+    navCtrl.navigateRoot('/home');
+    return false;
+  }
 };
