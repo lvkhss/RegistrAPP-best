@@ -13,7 +13,10 @@ export const ingresadoGuard: CanActivateFn = (route, state) => {
       return false;
     }
     return true;
+  // } if (condition) {
+    
+  // 
   } else {
     return true;
-  }
+  } 
 };

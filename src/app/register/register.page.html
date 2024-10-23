@@ -22,7 +22,22 @@
         <ion-item>
           <ion-input [(ngModel)]="password" placeholder="Password" type="password" required></ion-input>
         </ion-item>
-  
+        <ion-item id = "boton-tipouser">
+          <ion-button 
+            (click)="selectUserType('Estudiante')" 
+            expand="block" 
+            [color]="selectedUserType === 'Estudiante' ? 'secondary' : 'primary'"
+          >
+            Estudiante
+          </ion-button>
+          <ion-button 
+            (click)="selectUserType('Profesor')" 
+            expand="block" 
+            [color]="selectedUserType === 'Profesor' ? 'secondary' : 'primary'"
+          >
+            Profesor
+          </ion-button>
+        </ion-item>
         <ion-button id="btn-register" expand="block" color="warning" [disabled]="!username || !password" (click)="register()">Registrarse</ion-button>
       </ion-list>
       <ion-item>
