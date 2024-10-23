@@ -1,3 +1,5 @@
+$primary-color: #62d978; // color verde tenpo
+
 #container {
   text-align: center;
   margin: 2rem;
@@ -32,6 +34,9 @@
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 1rem;
+  --background: #{$primary-color};
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 #botones-login{

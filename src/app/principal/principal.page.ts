@@ -33,4 +33,9 @@ export class PrincipalPage implements OnInit {
     this.username = user.username || 'Invitado';
 
   }
+
+  deseleccionarClase() {
+    this.selectedClass = '';
+    this.qrCodeData = '';
+  }
 }

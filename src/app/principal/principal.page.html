@@ -15,13 +15,13 @@
     <ion-label color="primary" [routerLink]="['/']">Cerrar Sesión</ion-label>
   </ion-item>
 
-  <h4 id="centrar">Bienvenido {{ username }}</h4>
+  <h4 id="centrar">Bienvenido Profesor {{ username }}</h4>
   
   <ion-list>
-    <ion-item button (click)="toggleMenu()" class="lista-clases">
+    <ion-item button (click)="toggleMenu()" class="boton-clases">
       <ion-label id="hola">{{ selectedClass ? selectedClass : 'Clases' }}</ion-label>
     </ion-item>
-    <ion-list *ngIf="menuOpen">
+    <ion-list *ngIf="menuOpen" class="lista-clases">
       <ion-item button (click)="seleccionarClase('Programacion')">
         <ion-label>Programación</ion-label>
       </ion-item>
@@ -31,5 +31,8 @@
     </ion-list>
   </ion-list>
 
-  <qrcode *ngIf="qrCodeData" [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode *ngIf="qrCodeData" [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'" class="qr-clases"></qrcode>
+  <ion-button *ngIf="selectedClass" size="small" shape="round" (click)="deseleccionarClase()" class="boton-deseleccionar">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-button>
 </ion-content>

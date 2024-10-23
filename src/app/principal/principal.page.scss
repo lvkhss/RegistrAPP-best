@@ -1,11 +1,15 @@
+$primary-color: #62d978; // color verde tenpo
+
 #centrar {
   text-align: center;
   margin-top: 4rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
-.lista-clases {
-  --background: green; /* Cambia a cualquier tono de verde que prefieras */
-  --color: white; /* Para que el texto sea legible */
+.boton-clases {
+  --background: #{$primary-color};
+  --color: white; 
   border-radius: 15px;
   font-size: 20px;
   max-width: 200px;
@@ -14,6 +18,27 @@
   display: flex;
   justify-content: center; 
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
+.lista-clases{
+  margin-top: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.qr-clases {
+  margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+
+.boton-deseleccionar {
+  --background: #{$primary-color};
+  color: rgb(12, 2, 2);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
