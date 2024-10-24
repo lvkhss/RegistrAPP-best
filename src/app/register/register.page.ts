@@ -30,7 +30,7 @@ export class RegisterPage {
     
     if (this.userType === 'Profesor') {
       this.navCtrl.navigateRoot('/principal');
-    } else if (this.userType === 'estudiante') {
+    } else if (this.userType === 'Estudiante') {
       this.navCtrl.navigateRoot('/principal-estudiantes');
     }
   }
