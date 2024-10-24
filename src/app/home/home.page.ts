@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { DatabaseService } from '../database.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,19 +13,31 @@ export class HomePage {
   usuario: string = '';
   password: string = '';
 
-  constructor(private router: Router, public navCtrl: NavController ) {}
+  constructor(
+    private router: Router, 
+    public navCtrl: NavController, 
+    private databaseService: DatabaseService 
+  ) {}
 
   login() {
-    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    // Llamar al servicio para autenticar con la API
+    this.databaseService.login(this.usuario, this.password).subscribe(
+      (response) => {
+        console.log('Login exitoso:', response);
 
-    if (this.usuario === storedUser.username && this.password === storedUser.password) {
-      this.router.navigate(['/principal'], { queryParams: { nombre: this.usuario } });
-      localStorage.setItem('ingresado', 'true');
-      this.navCtrl.navigateRoot('/principal');
-    } else {
-      console.log('Invalid credentials');
-      // Optionally, show an alert or message to the user
-    }
+        // Si el login es exitoso, puedes almacenar el token o la información del usuario
+        localStorage.setItem('token', response.token);  // Suponiendo que la API devuelva un token
+
+        // Navegar a la página principal
+        this.router.navigate(['/principal'], { queryParams: { nombre: this.usuario } });
+        localStorage.setItem('ingresado', 'true');
+        this.navCtrl.navigateRoot('/principal');
+      },
+      (error) => {
+        console.error('Error en el login:', error);
+        // Mostrar un mensaje de error en la interfaz (por ejemplo, un alert o toast)
+      }
+    );
   }
 
   goToRecuperar() {
