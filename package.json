@@ -34,7 +34,7 @@
     "angularx-qrcode": "^18.0.2",
     "ionicons": "^7.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
-    "rxjs": "~7.8.0",
+    "rxjs": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
@@ -45,7 +45,7 @@
     "@angular-eslint/eslint-plugin-template": "^18.0.0",
     "@angular-eslint/schematics": "^18.0.0",
     "@angular-eslint/template-parser": "^18.0.0",
-    "@angular/cli": "18.2.3",
+    "@angular/cli": "^18.2.3",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/language-service": "^18.0.0",
     "@capacitor/cli": "6.1.2",
