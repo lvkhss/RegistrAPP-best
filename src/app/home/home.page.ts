@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class HomePage {
   usuario: string = '';
   password: string = '';
-  mensajeError: string = '';
+  errorMessage: string = '';
 
   constructor(
     private router: Router,
@@ -22,60 +22,50 @@ export class HomePage {
 
   // Método para iniciar sesión utilizando la API
   login() {
-    this.presenteprofeService.login(this.usuario, this.password).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response);
-        // Aquí puedes manejar la respuesta, guardar el token, redirigir, etc.
-        this.router.navigate(['/principal'], { queryParams: { nombre: this.usuario } });
-      },
-      error: (error) => {
-        console.error('Login failed:', error);
-        // Mostrar un mensaje de error al usuario si algo sale mal
-      },
-    });
+    if (!this.usuario || !this.password) {
+      // Si alguno de los campos está vacío, se muestra un mensaje de error
+      this.errorMessage = 'Tienes que ingresa tu usuario y contraseña.';
+    } else {
+      // Si ambos campos tienen valores, se procede a autenticar
+      this.errorMessage = '';  // Limpiar cualquier mensaje de error previo
+      this.goToAut();    // Llamar al método de autenticación
+    }
   }
-
   // Método para autenticar y navegar al dashboard
-  goToDashboard() {
+  goToAut() {
     const credentials = {
       correo: this.usuario,  
       password: this.password,
     };
-
+  
     // Llamar al servicio de autenticación
     this.authService.authenticate(credentials).subscribe(
       async (response) => {
-        console.log('Respuesta de autenticación:', response);
-
-        // Guarda el token en el almacenamiento si la autenticación es exitosa
+        console.log('Respuesta de autenticación:', response);  
+  
         await this.authService.saveToken(response.auth.token);
-
-
-
+  
         // Obtén el perfil del usuario desde la respuesta
-      const perfil = response.perfil;
-      const username = response.data.nombre_completo || 'Invitado';
-
+        const perfil = response.perfil;
+        const username = response.data.nombre_completo || 'Invitado';
+        
+        //Verifica los datos del usuario
+        console.log('Perfil del usuario:', perfil);  
+        console.log('Nombre del usuario:', username); 
+  
         // Navegar según el perfil del usuario
-      if (perfil === 'estudiante') {
-        // Navegar a la vista para estudiantes
-        this.navCtrl.navigateForward(['/dashboard', { usuario: username }]);
-      } else if (perfil === 'docente') {
-        // Navegar a la vista para profesores
-        this.navCtrl.navigateForward(['/dashboard-profe', { usuario: username }]);
-      } else {
-        // Manejar otros perfiles o redirigir a una vista genérica
-        this.navCtrl.navigateForward(['/dashboard', { usuario: username }]);
+        if (perfil === 'estudiante') {
+          this.navCtrl.navigateForward(['/principal-estudiantes', { usuario: username }]);
+        } else if (perfil === 'docente') {
+          this.navCtrl.navigateForward(['/principal', { usuario: username }]);
+        } 
+      },
+      (error) => {
+        console.error('Error de autenticación:', error);
+        this.errorMessage = 'Usuario o contraseña incorrecta.';
       }
-    },
-    (error) => {
-      console.error('Error de autenticación:', error);
-      // Muestra un mensaje de error si la autenticación falla
-      this.mensajeError = 'Usuario o contraseña incorrecta.';
-    }
     );
   }
-
 
   goToRecuperar() {
     console.log('click');

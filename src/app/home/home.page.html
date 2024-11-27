@@ -13,23 +13,27 @@
     <div class="content-box">
       <ion-list lines="none" class="login-form">
         <ion-item>
+          <!-- Usuario -->
           <ion-input
             [(ngModel)]="usuario"
             label="Usuario"
             type="text"
             labelPlacement="floating"
+            id="username"
           ></ion-input>
         </ion-item>
+        <!-- Contrasena -->
         <ion-item>
           <ion-input
             [(ngModel)]="password"
             label="Password"
             type="password"
             labelPlacement="floating"
+            id="password"
           ></ion-input>
         </ion-item>
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
       </ion-list>
-
       <ion-button
         id="btn-iniciar"
         expand="block"
@@ -38,7 +42,6 @@
       >
         INGRESAR
       </ion-button>
-
       <div class="action-links">
         <ion-button
           fill="clear"
@@ -46,13 +49,6 @@
           id="recuperarPass"
         >
           Recuperar contraseña
-        </ion-button>
-        <ion-button
-          fill="clear"
-          (click)="goToRegister()"
-          id="register"
-        >
-          ¿No tienes una cuenta? Regístrate
         </ion-button>
       </div>
     </div>
