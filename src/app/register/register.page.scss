@@ -1,95 +1,57 @@
-#container {
-    text-align: center;
-    margin: 2rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 30%;
-    // transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  
-  #btn-register {
-    margin-top: 1rem;
-    width: 9rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 1rem;
-  }
-  
-  #recuperarPass{
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  #recuperarPass:hover{
-    border-bottom: 1px solid;
-  }
+$primary-color: #7400e9;
 
-  #container {
-    text-align: center;
-    margin: 2rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 30%;
-    // transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-    color: #8c8c8c;
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  
-  #btn-register {
-    margin-top: 1rem;
-    width: 9rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 1rem;
-  }
-  
-  #recuperarPass {
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  #recuperarPass:hover {
-    border-bottom: 1px solid;
-  }
-  
-#boton-tipouser {
+.app-container {
+  background-color: #ffffff;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   flex-direction: column;
-  text-align: space-between;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.form-section {
+  background-color: $primary-color;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 400px;
+}
+
+
+
+ion-input {
+  --placeholder-color: $primary-color;
+  color: $primary-color;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+ion-button {
+  flex: 1;
+  margin: 0 5px;
+  border-radius: 20px;
+}
+
+#btn-register {
+  margin-top: 10px;
+  --background: white;
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.back-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link ion-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
 }
