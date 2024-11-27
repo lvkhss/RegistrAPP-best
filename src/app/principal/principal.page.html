@@ -10,13 +10,14 @@
       <ion-title size="large">Principal</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-item>
     <ion-label color="primary" [routerLink]="['/']">Cerrar Sesión</ion-label>
   </ion-item>
 
   <h4 id="centrar">Bienvenido Profesor {{ username }}</h4>
-  
+
+  <!-- Menú de clases -->
   <ion-list>
     <ion-item button (click)="toggleMenu()" class="boton-clases">
       <ion-label id="hola">{{ selectedClass ? selectedClass : 'Clases' }}</ion-label>
@@ -31,7 +32,12 @@
     </ion-list>
   </ion-list>
 
-  <qrcode *ngIf="qrCodeData" [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'" class="qr-clases"></qrcode>
+  <!-- Mostrar código QR si qrCodeData tiene valor -->
+  <div *ngIf="qrCodeUrl" class="qr-code-container">
+    <img [src]="qrCodeUrl" alt="Código QR" />
+  </div>
+
+  <!-- Botón para deseleccionar clase -->
   <ion-button *ngIf="selectedClass" size="small" shape="round" (click)="deseleccionarClase()" class="boton-deseleccionar">
       <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
