@@ -1,55 +1,53 @@
-$primary-color: #62d978; // color verde tenpo
+$primary-color: #7400e9; // color match 
 
-#container {
-  text-align: center;
-  margin: 2rem;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30%;
-  // transform: translateY(-50%);
-}
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
 
-  color: #8c8c8c;
+  #app-container {
+    background-color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-#btn-iniciar {
-  margin-top: 1rem;
-  width: 7rem;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 1rem;
-  --background: #{$primary-color};
-  color: white;
-  text-shadow: 1px 1px 2px black;
-}
-
-#botones-login{
-  text-align: center;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-#recuperarPas{
+  .content-box {
+    background-color: #7400e9; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 400px;
+  }
   
-  text-decoration: none;
-}
+  .app-logo img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+  }
 
-#recuperarPass:hover{
-  text-decoration: underline; 
-}
+  ion-item {
+    color: $primary-color;
+    --background: #ffffff; 
+  }
+
+  .login-form {
+    background: #ffffff; 
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+  }
+
+  #btn-iniciar {
+    margin-top: 20px;
+    --background: white;
+    color: $primary-color; 
+  }
+
+  .action-links ion-button {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
