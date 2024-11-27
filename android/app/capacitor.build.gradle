@@ -13,6 +13,7 @@ dependencies {
     implementation project(':capacitor-app')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
+    implementation project(':capacitor-preferences')
     implementation project(':capacitor-status-bar')
     implementation "com.android.support:support-v4:27.+"
 }
