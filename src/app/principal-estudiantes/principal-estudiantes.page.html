@@ -1,25 +1,26 @@
+
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Estudiantes</ion-title>
+  <ion-toolbar class="contenedor-estudiantes">
+    <ion-title class="estudiantes">Estudiantes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-item>
-  <ion-label color="primary" (click)="logout()">Cerrar Sesión</ion-label>
-</ion-item>
 
-<h4 id="centrar">Bienvenido Estudiante {{ username }}</h4>
+
+<h4 class="texto-bienvenida fondo-azul">Bienvenido Estudiante {{ username }}</h4>
 
 <ion-content>
-  <ion-list>
     <ion-item *ngFor="let barcode of barcodes"> 
       <ion-label position="stacked">{{ barcode.format }}</ion-label>
       <ion-input type="text" [value]="barcode.rawValue"></ion-input>
     </ion-item>
-  </ion-list>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+</ion-content>
+
+<ion-item class="navbar">
+  <div class="botones">
+    <ion-label [routerLink]="['/']">Cerrar Sesión</ion-label>
     <ion-fab-button (click)="scan()" [disabled]="!isSupported">
       <ion-icon name="scan"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
-</ion-content>
+  </div>
+</ion-item>

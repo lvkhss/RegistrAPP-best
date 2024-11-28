@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Principal</ion-title>
+  <ion-toolbar class="contenedor-profesores">
+    <ion-title class="profesores">Profesores</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,29 +11,28 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-    <ion-label color="primary" [routerLink]="['/']">Cerrar Sesión</ion-label>
-  </ion-item>
-
-  <h4 id="centrar">Bienvenido Profesor {{ username }}</h4>
+  <h4 class="texto-bienvenida">Bienvenido Profesor {{ username }}</h4>
 
   <!-- Menú de clases -->
-  <ion-list>
-    <ion-item button (click)="toggleMenu()" class="boton-clases">
-      <ion-label id="hola">{{ selectedClass ? selectedClass : 'Clases' }}</ion-label>
-    </ion-item>
-    <ion-list *ngIf="menuOpen" class="lista-clases">
-      <ion-item button (click)="seleccionarClase('Programacion')">
-        <ion-label>Programación</ion-label>
+  <!-- <div class="lista-de-clases-container">
+    <ion-list class="lista-de-clases">
+      <ion-item button (click)="toggleMenu()" class="boton-clases">
+        <ion-label>{{ selectedClass ? selectedClass : 'Clases' }}</ion-label>
       </ion-item>
-      <ion-item button (click)="seleccionarClase('Base de Datos')">
-        <ion-label>Base de Datos</ion-label>
-      </ion-item>
+      <ion-list *ngIf="menuOpen" class="lista-clases">
+        <ion-item button (click)="seleccionarClase('Programacion')">
+          <ion-label>Programación</ion-label>
+        </ion-item>
+        <ion-item button (click)="seleccionarClase('Base de Datos')">
+          <ion-label>Base de Datos</ion-label>
+        </ion-item>
+      </ion-list>
     </ion-list>
-  </ion-list>
+  </div> -->
+
 
   <!-- Mostrar código QR si qrCodeData tiene valor -->
-  <div *ngIf="qrCodeUrl" class="qr-code-container">
+  <div *ngIf="qrCodeUrl" class="qr-code-container fondo-qr">
     <img [src]="qrCodeUrl" alt="Código QR" />
   </div>
 
@@ -42,3 +41,13 @@
       <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
 </ion-content>
+
+<ion-item class="navbar">
+  <ion-label  [routerLink]="['/']">Cerrar Sesión</ion-label>
+
+    <ion-label clas >clases</ion-label>
+
+
+    <ion-label clas >agregar clase</ion-label>
+
+</ion-item>

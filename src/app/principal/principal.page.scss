@@ -1,4 +1,4 @@
-$primary-color: #62d978; // color verde tenpo
+$primary-color: #052C53; 
 
 #centrar {
   text-align: center;
@@ -41,4 +41,70 @@ $primary-color: #62d978; // color verde tenpo
   color: rgb(12, 2, 2);
   margin-left: 50%;
   transform: translateX(-50%);
+}
+
+ion-content {
+  --background: white !important;
+}
+
+ion-toolbar {
+  --background: #052C53;
+  --color: white;
+}
+h4.texto-bienvenida {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #E6B02F;
+  height: 4rem;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0 1rem;
+}
+
+.cerrar-sesion {
+  --background: #{$primary-color};
+  margin-top: 1rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+ion-label, ion-fab-button {
+  margin: 0 1rem;
+  border-radius: 0.5rem; /* Opcional: para redondear los bordes */
+}
+
+.lista-de-clases {
+  --background: white;
+  background-color: white;
+}
+
+.boton-clase {
+  --background: #{$primary-color};
+  --color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  max-width: 200px;
+  margin-left: 15px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
 }

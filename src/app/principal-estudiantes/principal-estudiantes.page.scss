@@ -1,8 +1,76 @@
-$primary-color: #62d978; // color verde tenpo
-
 #centrar {
   text-align: center;
   margin-top: 4rem;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+// color de texto estudiantes
+ion-toolbar {
+  --background: #052C53;
+  --color: white;
+}
+// mensaje bienvenidos
+h4{
+  background-color: white;
+  text-align: center;
+}
+//color del fondo
+#background-content {
+  background-color: white !important;
+}
+
+.navbar .item-native {
+  --background: #E6B02F; /* Mismo color amarillo */
+  border: none; /* Elimina cualquier borde */
+}
+
+body {
+  background-color: white !important;
+}
+
+ion-content {
+  --background: white !important;
+}
+
+// color de texto estudiantes
+ion-toolbar {
+  --background: #052C53;
+}
+
+.estudiantes {
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #E6B02F;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0 1rem;
+}
+
+ion-label, ion-fab-button {
+  color: #E6B02F; 
+  margin: 0 1rem;
+
+}
+
+ion-fab-button {
+  --background: white; 
+  --color: #E6B02F; 
+}
+
+.fondo-azul {
+  background-color: #052C53; 
+  color: white; 
+  text-align: center; 
+  padding: 1rem; 
 }
