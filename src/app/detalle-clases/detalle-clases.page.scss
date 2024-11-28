@@ -1,4 +1,112 @@
+$primary-color: #052C53; 
+$secondary-color: #052C53;
+
+#centrar {
+  text-align: center;
+  margin-top: 4rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.boton-clases {
+  --background: #{$primary-color};
+  --color: white; 
+  border-radius: 15px;
+  font-size: 20px;
+  max-width: 200px;
+  margin-left: 15px;
+  color: white; 
+  display: flex;
+  justify-content: center; 
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.lista-clases{
+  margin-top: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.qr-clases {
+  margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+
+.boton-deseleccionar {
+  --background: #{$primary-color};
+  color: rgb(12, 2, 2);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+ion-content {
+  --background: white !important;
+}
+
+ion-toolbar {
+  --background: #052C53;
+  --color: white;
+}
+h4.texto-bienvenida {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+}
+
+
+ion-label, ion-fab-button {
+  margin: 0 1rem;
+  border-radius: 0.5rem; /* Opcional: para redondear los bordes */
+}
+
+.lista-de-clases {
+  --background: white;
+  background-color: white;
+}
+
+.boton-clase {
+  --background: #{$primary-color};
+  --color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  max-width: 200px;
+  margin-left: 15px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+}
+
+ion-label, ion-fab-button {
+  color: #E6B02F; 
+  margin: 0 1rem;
+}
+
+ion-fab-button {
+  --background: white; 
+  --color: #E6B02F; 
+}
+
 .custom-tab-bar {
-    --background: #052C53 ; 
-    --color: white;
-  }
+  --background: #052C53 ; 
+  --color: white;
+}
+
+ion-card {
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}

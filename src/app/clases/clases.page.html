@@ -1,46 +1,61 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>clases</ion-title>
+    <ion-title>Clases del Curso</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon routerlink="dashboard-profe" name="arrow-back"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">clases</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let clase of clases">
+      <ion-label>
+        <h2>{{ clase.fecha }}</h2>
+        <p>{{ clase.hora_inicio }}</p>
+        <p>{{ clase.hora_termino }}</p>
+        <p>{{ clase.codigo_web }}</p>
+      </ion-label>
+      <ion-button [routerLink]="['/qrgenerator', clase.codigo_web]" expand="block" fill="clear" shape="round">
+        Ver QR
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-input type="date" [(ngModel)]="nuevaClase.fecha"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Hora de Inicio</ion-label>
+    <ion-select [(ngModel)]="nuevaClase.hora_inicio">
+      <ion-select-option value="09:00">09:00</ion-select-option>
+      <ion-select-option value="10:00">10:00</ion-select-option>
+      <ion-select-option value="11:00">11:00</ion-select-option>
+      <ion-select-option value="12:00">12:00</ion-select-option>
+      <ion-select-option value="13:00">13:00</ion-select-option>
+      <ion-select-option value="14:00">14:00</ion-select-option>
+      <ion-select-option value="15:00">15:00</ion-select-option>
+      <ion-select-option value="16:00">16:00</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Hora de Término</ion-label>
+    <ion-select [(ngModel)]="nuevaClase.hora_termino">
+      <ion-select-option value="10:00">10:00</ion-select-option>
+      <ion-select-option value="11:00">11:00</ion-select-option>
+      <ion-select-option value="12:00">12:00</ion-select-option>
+      <ion-select-option value="13:00">13:00</ion-select-option>
+      <ion-select-option value="14:00">14:00</ion-select-option>
+      <ion-select-option value="15:00">15:00</ion-select-option>
+      <ion-select-option value="16:00">16:00</ion-select-option>
+      <ion-select-option value="17:00">17:00</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button  color="warning" expand="full" (click)="crearClase()">Crear Clase</ion-button>
 </ion-content>
-
-<!-- navbar -->
-<ion-header [translucent]="true">
-  <ion-toolbar class="contenedor-profesores">
-    <ion-title class="profesores">Estudiante</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Principal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!-- <h4 class="texto-bienvenida">Bienvenido Estudiante {{ username }}</h4> -->
-
-
-</ion-content>
-
-<div class="navbar">
-  <ion-tab-bar slot="bottom" class="custom-tab-bar">
-    <ion-tab-button tab="schedule">
-      <ion-icon name="scan"></ion-icon>
-      <ion-label>Registrar Asistencia</ion-label>
-    </ion-tab-button>
-   
-    <ion-tab-button class="arrow-back-circle-outline" [routerLink]="['/']" tab="about">
-      <ion-icon name="log-in"></ion-icon>
-      <ion-label>Cerrar Sesion</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</div>

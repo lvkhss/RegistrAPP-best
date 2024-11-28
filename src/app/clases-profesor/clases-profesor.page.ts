@@ -71,7 +71,7 @@ export class ClasesProfesorPage implements OnInit {
   }
 
   verDetalleCurso(id: number) {
-    this.router.navigate(['/curso-detalle', id]);
+    this.router.navigate(['/detalle-clases', id]);
   }
 
   async crearCurso() {
