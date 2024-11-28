@@ -4,7 +4,7 @@
   }
 
   $primary-color: #052C53; 
-$secondary-color: #052C53;
+$secondary-color: #E6B02F;
 
 #centrar {
   text-align: center;
@@ -102,7 +102,6 @@ ion-fab-button {
   --color: #E6B02F; 
 }
 
-
 ion-card {
   margin: auto;
   width: 100%;
@@ -110,5 +109,52 @@ ion-card {
   height: 100%;
   border-radius: 20px;
   background-color: $secondary-color;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0 ); 
 }
+
+h4.texto-bienvenida {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+}
+
+ion-button.submit-button {
+    margin-top: 1rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    --background: #E6B02F; 
+    --color: black; 
+  }
+  
+  ion-list {
+    border-radius: 0.5rem;
+    background-color: $primary-color;
+  }
+  
+  ion-list ion-item {
+    --background: $primary-color;
+    --color: $secondary-color;
+    border-radius: 0.5rem;
+  }
+  
+  ion-list ion-item ion-label,
+  ion-list ion-item ion-input,
+  ion-list ion-item ion-textarea,
+  ion-list ion-item ion-icon {
+    color: $secondary-color;
+  }
+  
+  .formulario-w {
+    border-radius: 4rem;
+    padding: 1rem; 
+    background-color: white; 
+    margin-top: 2rem; 
+  }
+
+  ion-content.ion-no-padding {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+  }

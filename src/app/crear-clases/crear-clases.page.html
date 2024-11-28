@@ -10,57 +10,37 @@
       <ion-title size="large">crear-clases</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
 
-<!-- navbar -->
-<ion-header [translucent]="true">
-  <ion-toolbar class="contenedor-profesores">
-    <ion-title class="profesores">Estudiante</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Principal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <h4 class="texto-bienvenida">Bienvenido Estudiante {{ usuario }}</h4>
-</ion-content>
-
-<ion-content class="ion-padding">
   <div class="formulario-w">
     <form #cursoForm="ngForm" (ngSubmit)="onSubmit(cursoForm)" class="form-container">
-      <ion-list lines="none">
-        <ion-item>
-          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-          <ion-label position="floating">Nombre De Clase</ion-label>
-          <ion-input [(ngModel)]="curso.nombre" name="nombre" required></ion-input>
-        </ion-item>
-        <ion-item> 
-          <ion-icon slot="start" name="barcode-outline"></ion-icon>
-          <ion-label position="floating">seccion</ion-label>
-          <ion-input [(ngModel)]="curso.sigla" name="sigla" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-icon slot="start" name="business-outline"></ion-icon>
-          <ion-label position="floating">Institución</ion-label>
-          <ion-input [(ngModel)]="curso.institucion" name="institucion" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-icon slot="start" name="document-text-outline"></ion-icon>
-          <ion-label position="floating">Asignatura</ion-label>
-          <ion-textarea [(ngModel)]="curso.descripcion" name="descripcion" required></ion-textarea>
-        </ion-item>
-      </ion-list>
-      <ion-button expand="block" color="primary" type="submit" [disabled]="!cursoForm.form.valid" class="submit-button">
-        Guardar
-      </ion-button>
+            <ion-list lines="none">
+              <ion-item class="colorlista">
+                <ion-icon slot="start" name="school-outline"></ion-icon>
+                <ion-label position="floating">Nombre De Clase</ion-label>
+                <ion-input [(ngModel)]="curso.nombre" name="nombre" required></ion-input>
+              </ion-item>
+              <ion-item> 
+                <ion-icon slot="start" name="library-outline"></ion-icon>
+                <ion-label position="floating">Seccion</ion-label>
+                <ion-input [(ngModel)]="curso.sigla" name="sigla" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="business-outline"></ion-icon>
+                <ion-label position="floating">Institución</ion-label>
+                <ion-input [(ngModel)]="curso.institucion" name="institucion" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="pencil-outline"></ion-icon>
+                <ion-label position="floating">Asignatura</ion-label>
+                <ion-textarea [(ngModel)]="curso.descripcion" name="descripcion" required></ion-textarea>
+              </ion-item>
+            </ion-list>
+            <ion-button expand="block" type="submit" [disabled]="!cursoForm.form.valid" class="submit-button">
+              Guardar
+            </ion-button>
     </form>
   </div>
 </ion-content>
-
 
 <div class="navbar">
   <ion-tab-bar slot="bottom" class="custom-tab-bar">
