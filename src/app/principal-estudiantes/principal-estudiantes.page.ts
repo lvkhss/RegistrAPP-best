@@ -3,6 +3,7 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController, NavController, LoadingController, ToastController } from '@ionic/angular';  // Asegúrate de importar LoadingController y ToastController
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';  // Asegúrate de tener este servicio para obtener el token
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-principal-estudiantes',
@@ -10,12 +11,13 @@ import { AuthService } from '../services/auth.service';  // Asegúrate de tener 
   styleUrls: ['./principal-estudiantes.page.scss'],
 })
 export class PrincipalEstudiantesPage implements OnInit {
-  username: string = '';
+  usuario: string = '';
   isSupported = false;
   barcodes: Barcode[] = [];
 
 
   constructor(
+    private route: ActivatedRoute, 
     private alertController: AlertController,
     private navCtrl: NavController,
     private http: HttpClient,
@@ -25,8 +27,9 @@ export class PrincipalEstudiantesPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.username = user.username || 'Invitado';
+    this.route.params.subscribe(params => {
+      this.usuario = params['usuario'] ? params['usuario'] : 'Invitado';
+    });
     this.checkBarcodeSupport();
   }
 
@@ -41,17 +44,15 @@ export class PrincipalEstudiantesPage implements OnInit {
       this.showPermissionAlert();
       return;
     }
-
+  
     const { barcodes } = await BarcodeScanner.scan();
-    this.barcodes.push(...barcodes);
-    
-    if (this.barcodes.length > 0) {
-      const scanResult = this.barcodes[0]?.displayValue; 
-      if (scanResult) {
-        await this.registrarAsistencia(scanResult);
-      }
+    const scanResult = barcodes[0]?.displayValue;
+  
+    if (scanResult) {
+      await this.registrarAsistencia(scanResult);
     }
   }
+  
 
   async requestPermissions(): Promise<boolean> {
     const { camera } = await BarcodeScanner.requestPermissions();
