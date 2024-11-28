@@ -29,7 +29,23 @@ const routes: Routes = [
   {
     path: 'principal-estudiantes',
     loadChildren: () => import('./principal-estudiantes/principal-estudiantes.module').then(m => m.PrincipalEstudiantesPageModule),
+  },  {
+    path: 'clases',
+    loadChildren: () => import('./clases/clases.module').then( m => m.ClasesPageModule)
   },
+  {
+    path: 'crear-clases',
+    loadChildren: () => import('./crear-clases/crear-clases.module').then( m => m.CrearClasesPageModule)
+  },
+  {
+    path: 'detalle-clases',
+    loadChildren: () => import('./detalle-clases/detalle-clases.module').then( m => m.DetalleClasesPageModule)
+  },
+  {
+    path: 'clases-profesor',
+    loadChildren: () => import('./clases-profesor/clases-profesor.module').then( m => m.ClasesProfesorPageModule)
+  },
+
 ];
 
 @NgModule({
