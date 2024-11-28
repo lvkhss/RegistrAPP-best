@@ -1,3 +1,130 @@
+/* Colores globales */
+$primary-color: #E6B02F;
+$secondary-color: #052C53; 
+
+/* Centrado de elementos */
+#centrar {
+  text-align: center;
+  margin-top: 4rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Estilo para el botón de ver detalles */
+ion-button.btn-detalle {
+  --background: $primary-color;
+  --color: white;
+  border-radius: 10px;
+  margin: 0 auto; /* Centra el botón horizontalmente */
+  display: block; /* Asegura que el botón sea un bloque */
+}
+
+
+/* Estilo para el ion-content general */
+ion-content {
+  --background: #f9f9f9 !important; /* Fondo claro */
+  padding: 1rem;
+}
+
+/* Estilo para h4 (mensaje de bienvenida) */
+h4.texto-bienvenida {
+  background-color: rgb(0, 0, 0);
+  color: black;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Estilo para etiquetas y botones */
+ion-label, ion-fab-button {
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+  color: $secondary-color; /* Color de texto secundario */
+}
+
+/* Estilo para la lista de clases */
+.lista-de-clases {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los cards (cursos) */
+ion-card {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los títulos de las clases */
+h3 {
+  text-align: center;
+  color: black;
+}
+
+.course-list {
+  margin-top: 1rem;
+  background-color: white;
+  padding: 0; 
+}
+.course-list .course-item:last-child {
+  border-bottom: none;
+}
+
+.course-item {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ccc; /* Borde de separación */
+  padding: 1rem;  /* Espaciado dentro del item */
+}
+
+.course-thumbnail img {
+  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.course-label {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.course-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.course-description {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Estilo para el botón de ver detalles */
+.btn-detalle {
+  background: #E6B02F;
+  color: white;
+}
+
+/* Estilo para el mensaje de "No hay cursos disponibles" */
+.no-courses-item {
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.no-courses-label {
+  font-size: 1.1rem;
+  color: #888;
+  padding: 1rem;
+}
+
 $primary-color: #052C53; 
 $secondary-color: #052C53;
 
@@ -97,6 +224,28 @@ ion-fab-button {
   --color: #E6B02F; 
 }
 
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Asegura que se quede encima del contenido */
+  background-color: #052C53; /* Color de fondo de la barra de navegación */
+  color: white; /* Color de texto blanco */
+}
+
+/* Aseguramos que el contenido no se superponga a la navbar */
+ion-content {
+  padding-bottom: 60px; /* Ajusta el espacio inferior para que no se solape con la navbar */
+}
+
+/* Si el problema persiste, podrías probar con position sticky */
+.navbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 9999;
+}
+
 .custom-tab-bar {
   --background: #052C53 ; 
   --color: white;
@@ -110,4 +259,20 @@ ion-card {
   border-radius: 20px;
   background-color: $secondary-color;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}
+
+ion-list {
+  --background: white;
+  border: 1px solid #ccc;  /* Borde general para la lista */
+  padding: 0; /* Eliminar el padding para que se ajuste bien */
+}
+
+ion-list ion-item {
+  --background: white;
+  border-bottom: 1px solid #ccc;  /* Borde entre los items */
+  padding: 1rem; /* Espaciado interno para los items */
+}
+
+ion-list ion-item:last-child {
+  border-bottom: none;  /* Eliminar borde en el último item */
 }
