@@ -24,7 +24,7 @@ export class HomePage {
   login() {
     if (!this.usuario || !this.password) {
       // Si alguno de los campos está vacío, se muestra un mensaje de error
-      this.errorMessage = 'Tienes que ingresa tu usuario y contraseña.';
+      this.errorMessage = 'Campos incompletos.';
     } else {
       // Si ambos campos tienen valores, se procede a autenticar
       this.errorMessage = '';  // Limpiar cualquier mensaje de error previo

@@ -1,10 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar style="--background: #7400e9; --color: white;">
-    <ion-title>Match</ion-title>
-    <ion-buttons slot="end">
-      <ion-button>About</ion-button>
-      <ion-button>Help</ion-button>
-    </ion-buttons>
+  <ion-toolbar style="--background: #E6B02F; --color: white;">
+    <ion-title>Duoc</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +8,7 @@
   <div id="app-container">
     <div class="content-box">
       <ion-list lines="none" class="login-form">
-        <ion-item>
+        <ion-item class="inputLogin">
           <!-- Usuario -->
           <ion-input
             [(ngModel)]="usuario"
@@ -23,7 +19,7 @@
           ></ion-input>
         </ion-item>
         <!-- Contrasena -->
-        <ion-item>
+        <ion-item class="inputLogin">
           <ion-input
             [(ngModel)]="password"
             label="Password"
@@ -32,8 +28,8 @@
             id="password"
           ></ion-input>
         </ion-item>
-        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
       </ion-list>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
       <ion-button
         id="btn-iniciar"
         expand="block"

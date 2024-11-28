@@ -1,28 +1,36 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Recuperar</ion-title>
+  <ion-toolbar style="--background: #E6B02F; --color: white;">
+    <ion-title>Recuperar Contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Recuperar</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-
-  <ion-content>
-    <ion-list>
-      <ion-item>
-        <ion-input [(ngModel)]="username" placeholder="Usuario" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="newPassword" placeholder="Nueva Contraseña" type="password"></ion-input>
-      </ion-item>
-      <ion-button expand="block" color="primary" (click)="updatePassword()">Actualizar Contraseña</ion-button>
-      <ion-item>
-        <ion-label color="primary" [routerLink]="['/']">Volver</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+  <div id="app-container">
+    <div class="content-box">
+      <ion-list lines="none" class="login-form">
+        <ion-item class="inputContainer">
+          <ion-input
+            label="Correo"
+            type="email"
+            labelPlacement="floating"
+            id="username"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="signupContainer ion-text-center">
+        <ion-button id="btn-recuperar"
+        expand="block"
+        shape="round">Enviar correo</ion-button>
+      </div>
+      <div class="action-links">
+        <ion-button
+          fill="clear"
+          routerLink="/home"
+          id="volverHome"
+        >
+          Volver
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
