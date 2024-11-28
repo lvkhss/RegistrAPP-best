@@ -11,3 +11,36 @@
     </ion-toolbar>
   </ion-header>
 </ion-content>
+
+<!-- navbar -->
+<ion-header [translucent]="true">
+  <ion-toolbar class="contenedor-profesores">
+    <ion-title class="profesores">Estudiante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Principal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h4 class="texto-bienvenida">Bienvenido Estudiante {{ username }}</h4>
+
+
+</ion-content>
+
+<div class="navbar">
+  <ion-tab-bar slot="bottom" class="custom-tab-bar">
+    <ion-tab-button (click)="scan()" tab="schedule">
+      <ion-icon name="qr-code"></ion-icon>
+      <ion-label>Registrar Asistencia</ion-label>
+    </ion-tab-button>
+   
+    <ion-tab-button class="cerrar" [routerLink]="['/']" tab="about">
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label>Cerrar Sesion</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</div>
