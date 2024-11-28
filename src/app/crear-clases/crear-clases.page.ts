@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -14,7 +15,7 @@ export class CrearClasesPage implements OnInit {
   selectedClass: string = '';
   programacionButtonVisible: boolean = false;
   userData: any = {};
-  //valores de formulario
+  // valores de formulario
   curso: any = {
     nombre: '',
     sigla: '',
@@ -23,6 +24,7 @@ export class CrearClasesPage implements OnInit {
   };
 
   constructor(
+    private authService: AuthService,
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient
@@ -34,19 +36,33 @@ export class CrearClasesPage implements OnInit {
     });
   }
 
-  onSubmit(form: any) {
+  async onSubmit(form: any) {
     if (form.valid) {
       console.log('Form Submitted', this.curso);
-      this.postCurso(this.curso);
+      
+      // Obtén el token antes de enviar la solicitud
+      const token = await this.authService.getToken();
+
+      if (token) {
+        // Llama al método para enviar el curso con el token
+        this.postCurso(this.curso, token);
+      } else {
+        console.error('No se encontró el token');
+      }
     }
   }
- 
-  postCurso(curso: any) {
-    const url = 'https://www.presenteprofe.cl/api/v1/cursos'; 
-    this.http.post(url, curso).pipe(
+
+  postCurso(curso: any, token: string) {
+    const url = 'https://www.presenteprofe.cl/api/v1/cursos';
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // Agregar el token al encabezado
+      'Content-Type': 'application/json'
+    });
+
+    this.http.post(url, curso, { headers }).pipe(
       catchError((error) => {
         console.error('Error al enviar el curso:', error);
-        return of(null); // devuelve null porsiaca
+        return of(null);  // Devuelve null en caso de error
       })
     ).subscribe((response) => {
       if (response) {
@@ -62,4 +78,3 @@ export class CrearClasesPage implements OnInit {
     this.router.navigate(['/']); 
   }
 }
-
