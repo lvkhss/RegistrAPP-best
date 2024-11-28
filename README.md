@@ -13,9 +13,9 @@
 3.1 al seleccionar scanear codigo qr solicitara permisos de camara y permitira scanear para marcar asistencia a la asignatura.
    
 #Logeado como profesor
-1 En el caso de registrarse como profesor, será llevado a la página de profesor donde tendra una barra de navegacion que le permite ir al home, ir a sus clases, ir a crear una nueva clase y finalmente un cerrar sesión.
-2 Ir a sus clases mostrara un listado de todas las clases de la base de datos acompañado con su nombre, asignatura y imagen respectiva.
+1. En el caso de registrarse como profesor, será llevado a la página de profesor donde tendra una barra de navegacion que le permite ir al home, ir a sus clases, ir a crear una nueva clase y finalmente un cerrar sesión.
+2. Ir a sus clases mostrara un listado de todas las clases de la base de datos acompañado con su nombre, asignatura y imagen respectiva.
 2.1 al seleccionar ir a clases mostrara una vista que te permite ver que dia se han impartido clases y puedes crear una nueva clase de esa materia generando un qr para que alumnos marquen asistencia.
-3 Crear una nueva clase te lleva a un formulario donde deberas ingresar los datos de la nueva clase como: nombre, sigla, asignatura, sede, descripcion, al ingresar se almacenara en la base de datos.
-4 Al seleccionar el Boton cerrar sesion, volvera nuevamente al iniciar sesion, cerrando credenciales.
+3. Crear una nueva clase te lleva a un formulario donde deberas ingresar los datos de la nueva clase como: nombre, sigla, asignatura, sede, descripcion, al ingresar se almacenara en la base de datos.
+4. Al seleccionar el Boton cerrar sesion, volvera nuevamente al iniciar sesion, cerrando credenciales.
 
