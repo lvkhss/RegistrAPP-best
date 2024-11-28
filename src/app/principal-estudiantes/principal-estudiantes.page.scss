@@ -1,53 +1,26 @@
+$primary-color: #E6B02F; 
+$secondary-color: #052C53;  /* Asegúrate de que esta variable esté correctamente definida */
+
+
 #centrar {
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-left: 50%;
   transform: translateX(-50%);
 }
-// color de texto estudiantes
+
 ion-toolbar {
-  --background: #052C53;
+  --background: #052C53;  /* Ya tienes este valor para el fondo */
   --color: white;
 }
-// mensaje bienvenidos
-h4{
-  background-color: white;
-  text-align: center;
-}
-//color del fondo
-#background-content {
-  background-color: white !important;
-}
-
-.navbar .item-native {
-  --background: #E6B02F; /* Mismo color amarillo */
-  border: none; /* Elimina cualquier borde */
-}
-
-body {
-  background-color: white !important;
-}
-
-ion-content {
-  --background: white !important;
-}
-
-// color de texto estudiantes
-ion-toolbar {
-  --background: #052C53;
-}
-
 .estudiantes {
   text-align: center;
 }
-
-.navbar {
-  display: flex;
-  justify-content: center;
+#contenido1 {
+  width: 80%;
+  margin-top: 50px ;
   align-items: center;
-  --background: #E6B02F;
 }
-
 .botones {
   display: flex;
   justify-content: space-between;
@@ -60,7 +33,6 @@ ion-toolbar {
 ion-label, ion-fab-button {
   color: #E6B02F; 
   margin: 0 1rem;
-
 }
 
 ion-fab-button {
@@ -68,9 +40,17 @@ ion-fab-button {
   --color: #E6B02F; 
 }
 
-.fondo-azul {
-  background-color: #052C53; 
-  color: white; 
-  text-align: center; 
-  padding: 1rem; 
+.custom-tab-bar {
+  --background: #052C53 ; 
+  --color: white;
+}
+
+ion-card {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
 }
