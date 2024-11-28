@@ -1,4 +1,5 @@
 $primary-color: #052C53; 
+$secondary-color: #052C53;
 
 #centrar {
   text-align: center;
@@ -58,29 +59,6 @@ h4.texto-bienvenida {
   padding: 1rem;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  --background: #E6B02F;
-  height: 4rem;
-}
-
-.botones {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 20rem;
-  padding: 0 1rem;
-}
-
-.cerrar-sesion {
-  --background: #{$primary-color};
-  margin-top: 1rem;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
 
 ion-label, ion-fab-button {
   margin: 0 1rem;
@@ -107,4 +85,29 @@ ion-label, ion-fab-button {
   margin-left: 50%;
   transform: translateX(-50%);
   text-align: left;
+}
+
+ion-label, ion-fab-button {
+  color: #E6B02F; 
+  margin: 0 1rem;
+}
+
+ion-fab-button {
+  --background: white; 
+  --color: #E6B02F; 
+}
+
+.custom-tab-bar {
+  --background: #052C53 ; 
+  --color: white;
+}
+
+ion-card {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
 }

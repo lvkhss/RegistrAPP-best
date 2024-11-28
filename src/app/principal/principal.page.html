@@ -42,12 +42,16 @@
   </ion-button>
 </ion-content>
 
-<ion-item class="navbar">
-  <ion-label  [routerLink]="['/']">Cerrar Sesión</ion-label>
-
-    <ion-label clas >clases</ion-label>
-
-
-    <ion-label clas >agregar clase</ion-label>
-
-</ion-item>
+<div class="navbar">
+  <ion-tab-bar slot="bottom" class="custom-tab-bar">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="scan"></ion-icon>
+      <ion-label>Registrar Asistencia</ion-label>
+    </ion-tab-button>
+   
+    <ion-tab-button class="cerrar" [routerLink]="['/']" tab="about">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      <ion-label>Cerrar Sesion</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</div>
