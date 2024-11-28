@@ -84,14 +84,15 @@ h3 {
   padding: 1rem;  /* Espaciado dentro del item */
 }
 
-img{
-  border-radius: 15px;
-}
-.course-thumbnail img {
-  border-radius: 8px;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.course-thumbnail{
+  width: 80px;  /* Define un tamaño fijo */
+  height: 80px; /* Asegúrate de que el contenedor también sea cuadrado */
+  overflow: hidden;  /* Esto oculta cualquier parte de la imagen que se desborde */
+  border-radius: 50%; /* Redondea el contorno del contenedor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000; /* Borde negro alrededor del contenedor */
 }
 
 .course-label {
