@@ -26,19 +26,50 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <h4 class="texto-bienvenida">Bienvenido Estudiante {{ username }}</h4> -->
-
-
+  <h4 class="texto-bienvenida">Bienvenido Estudiante {{ usuario }}</h4>
 </ion-content>
+
+<ion-content class="ion-padding">
+  <div class="formulario-w">
+    <form #cursoForm="ngForm" (ngSubmit)="onSubmit(cursoForm)" class="form-container">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          <ion-label position="floating">Nombre De Clase</ion-label>
+          <ion-input [(ngModel)]="curso.nombre" name="nombre" required></ion-input>
+        </ion-item>
+        <ion-item> 
+          <ion-icon slot="start" name="barcode-outline"></ion-icon>
+          <ion-label position="floating">seccion</ion-label>
+          <ion-input [(ngModel)]="curso.sigla" name="sigla" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="business-outline"></ion-icon>
+          <ion-label position="floating">Institución</ion-label>
+          <ion-input [(ngModel)]="curso.institucion" name="institucion" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="document-text-outline"></ion-icon>
+          <ion-label position="floating">Asignatura</ion-label>
+          <ion-textarea [(ngModel)]="curso.descripcion" name="descripcion" required></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" color="primary" type="submit" [disabled]="!cursoForm.form.valid" class="submit-button">
+        Guardar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
+
 
 <div class="navbar">
   <ion-tab-bar slot="bottom" class="custom-tab-bar">
-    <ion-tab-button tab="schedule">
-      <ion-icon name="qr-code"></ion-icon>
+    <ion-tab-button>
+      <ion-icon name="scan"></ion-icon>
       <ion-label>Registrar Asistencia</ion-label>
     </ion-tab-button>
    
-    <ion-tab-button class="cerrar" [routerLink]="['/']" tab="about">
+    <ion-tab-button class="arrow-back-circle-outline" [routerLink]="['/']" tab="about">
       <ion-icon name="log-in"></ion-icon>
       <ion-label>Cerrar Sesion</ion-label>
     </ion-tab-button>
