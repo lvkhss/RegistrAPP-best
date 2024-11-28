@@ -66,16 +66,16 @@ h3 {
   color: black;
 }
 
-.course-list {
+.lista-clase {
   margin-top: 1rem;
   background-color: white;
   padding: 0; 
 }
-.course-list .course-item:last-child {
+.lista-clase .item-clase:last-child {
   border-bottom: none;
 }
 
-.course-item {
+.item-clase{
   background-color: #fff;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -94,18 +94,18 @@ img{
   object-fit: cover;
 }
 
-.course-label {
+.lbl-clase {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.course-name {
+.nombre-clase {
   font-size: 1.2rem;
   font-weight: bold;
   color: $primary-color;
 }
 
-.course-description {
+.descripcion-clase {
   font-size: 1rem;
   color: #555;
 }
