@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController, NavController, LoadingController, ToastController } from '@ionic/angular';  // Asegúrate de importar LoadingController y ToastController
+import { AlertController, NavController, LoadingController, ToastController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../services/auth.service';  // Asegúrate de tener este servicio para obtener el token
+import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { QrScannerService } from '../services/qr-scanner.service'; // Importa el servicio QrScannerService
 
 @Component({
   selector: 'app-principal-estudiantes',
@@ -13,16 +14,15 @@ import { ActivatedRoute } from '@angular/router';
 export class PrincipalEstudiantesPage implements OnInit {
   usuario: string = '';
   isSupported = false;
-  barcodes: Barcode[] = [];
-
 
   constructor(
-    private route: ActivatedRoute, 
+    private readonly qrScannerService: QrScannerService,
+    private route: ActivatedRoute,
     private alertController: AlertController,
     private navCtrl: NavController,
     private http: HttpClient,
     private authService: AuthService,
-    private loadingController: LoadingController, 
+    private loadingController: LoadingController,
     private toastController: ToastController
   ) {}
 
@@ -38,34 +38,25 @@ export class PrincipalEstudiantesPage implements OnInit {
     this.isSupported = result.supported;
   }
 
+  // Método para escanear un código QR y registrar asistencia
   async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      this.showPermissionAlert();
-      return;
-    }
-  
-    const { barcodes } = await BarcodeScanner.scan();
-    const scanResult = barcodes[0]?.displayValue;
-  
-    if (scanResult) {
-      await this.registrarAsistencia(scanResult);
-    }
-  }
-  
+    try {
+      const barcodes = await this.qrScannerService.scan(); // Usa el servicio para escanear
 
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
-  }
+      if (barcodes.length === 0) {
+        await this.showToast('No se detectaron códigos QR');
+        return;
+      }
 
-  async showPermissionAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permiso Denegado',
-      message: 'Para usar la cámara, debes dar los permisos correspondientes.',
-      buttons: ['OK'],
-    });
-    await alert.present();
+      // Procesa el primer código escaneado
+      const scanResult = barcodes[0];
+      if (scanResult) {
+        await this.registrarAsistencia(scanResult); // Registra la asistencia con el resultado escaneado
+      }
+    } catch (error) {
+      console.error('Error al escanear:', error);
+      await this.showToast('Error al escanear el código QR.');
+    }
   }
 
   // Función para registrar asistencia usando la API
@@ -89,6 +80,7 @@ export class PrincipalEstudiantesPage implements OnInit {
       await this.http.post(`https://www.presenteprofe.cl/api/v1/clases/${code}/asistencia`, {}, { headers }).toPromise();
       await this.showToast('Asistencia registrada exitosamente');
     } catch (error) {
+      console.error('Error al registrar asistencia:', error);
       await this.showToast('Error al registrar asistencia: ' + ((error as any).message || error));
     } finally {
       await loading.dismiss();

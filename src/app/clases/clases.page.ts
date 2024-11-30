@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./clases.page.scss'],
 })
 export class ClasesPage implements OnInit {
-
+  qrCodeData: string = ''; // Variable para almacenar el código QR
   clases: any[] = [];
   cursoId!: number;
 
@@ -75,6 +75,10 @@ export class ClasesPage implements OnInit {
     } else {
       console.error('Error: Token invalido o expiró');
     }
+  }
+
+  verQR(clase: any) {
+    this.qrCodeData = clase.codigo_web;
   }
 
   goBack() {

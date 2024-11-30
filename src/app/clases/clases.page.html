@@ -19,12 +19,14 @@
         <p>{{ clase.hora_termino }}</p>
         <p>{{ clase.codigo_web }}</p>
       </ion-label>
-      <ion-button [routerLink]="['/qrgenerator', clase.codigo_web]" expand="block" fill="clear" shape="round">
+      <!-- Botón para mostrar el QR -->
+      <ion-button (click)="verQR(clase)" expand="block" fill="clear" shape="round">
         Ver QR
       </ion-button>
     </ion-item>
   </ion-list>
 
+  <!-- Formulario para crear clase (esto no se ha modificado) -->
   <ion-item>
     <ion-label position="floating">Fecha</ion-label>
     <ion-input type="date" [(ngModel)]="nuevaClase.fecha"></ion-input>
@@ -57,5 +59,13 @@
       <ion-select-option value="17:00">17:00</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button  color="warning" expand="full" (click)="crearClase()">Crear Clase</ion-button>
+  <ion-button color="warning" expand="full" (click)="crearClase()">Crear Clase</ion-button>
+
+  <!-- Mostrar el QR generado -->
+  <!-- <div class="qr-code-container" *ngIf="qrCodeVisible">
+    <qrcode [qrdata]="qrCodeData" size="300" errorCorrectionLevel="M"></qrcode>
+  </div> -->
+  <div class="qr-code-container">
+    <qr-code *ngIf="qrCodeVisible" [qrdata]="qrCodeData" size="300" errorCorrectionLevel="M"></qr-code>
+  </div>
 </ion-content>
