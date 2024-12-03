@@ -28,7 +28,7 @@ export class PrincipalPage  implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.usuario = params['usuario'] ? params['usuario'] : 'Invitado';
+      this.usuario = params['usuario'];
     });
     this.checkBarcodeSupport();
   }

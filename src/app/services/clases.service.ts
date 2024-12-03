@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
+// Remove the duplicate import statement
 @Injectable({
   providedIn: 'root',
 })
 export class ClasesService {
-  private apiUrl = (window as any).__env.API_URL_CURSOS; // Variable de entorno
+  private apiUrl = environment.API_URL_CURSOS;
 
   constructor(private http: HttpClient) {}
 
