@@ -3,17 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClasesService {
-  private apiUrl = 'https://www.presenteprofe.cl/api/v1/cursos';
+  private apiUrl = (window as any).__env.API_URL_CURSOS; // Variable de entorno
 
   constructor(private http: HttpClient) {}
 
   // Método para obtener todos los cursos
   getCursos(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
     return this.http.get(this.apiUrl, { headers });
   }
@@ -22,7 +22,7 @@ export class ClasesService {
   crearCurso(cursoData: any, token: string): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
 
     return this.http.post(this.apiUrl, cursoData, { headers });
@@ -30,20 +30,17 @@ export class ClasesService {
 
   getClases(cursoId: number, token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
     return this.http.get(`${this.apiUrl}/${cursoId}/clase`, { headers });
   }
 
-
   crearClase(cursoId: number, claseData: any, token: string): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
-  
+
     return this.http.post(`${this.apiUrl}/${cursoId}/clase`, claseData, { headers });
   }
-  
 }
-

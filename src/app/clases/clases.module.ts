@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ClasesPageRoutingModule } from './clases-routing.module';
 
 import { ClasesPage } from './clases.page';
-
+import { QrCodeModule } from 'ng-qrcode';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClasesPageRoutingModule
+    ClasesPageRoutingModule,
+    QrCodeModule
   ],
   declarations: [ClasesPage]
 })

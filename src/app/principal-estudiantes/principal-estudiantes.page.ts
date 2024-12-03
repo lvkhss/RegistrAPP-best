@@ -4,7 +4,7 @@ import { AlertController, NavController, LoadingController, ToastController } fr
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { QrScannerService } from '../services/qr-scanner.service'; // Importa el servicio QrScannerService
+import { QrScannerService } from '../services/qr-scanner.service';
 
 @Component({
   selector: 'app-principal-estudiantes',

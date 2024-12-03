@@ -21,41 +21,25 @@
       <ion-button color="warning" [routerLink]="['/clases/' + curso?.id]">Ver Clases del Curso</ion-button>
     </ion-card-content>
   </ion-card>
-
-  <!-- QR Section -->
-  <ion-card> 
-  <h2>Escanea el QR para Registrar tu Asistencia</h2>
-  <div id="qrImage">
-    <!-- <qr-code [value]="qrText" size="190" errorCorrectionLevel="M"></qr-code> -->
-    <h5>El codigo QR es el siguente:</h5>
-    <div class="ion-padding-top"><h4>{{ qrText }}</h4></div>
-  </div>
-  <ion-button color="warning" (click)="captureScreen()" expand="block" class="submit ">
-    Compartir
-    <ion-icon slot="end" name="share-social-outline"></ion-icon>
-  </ion-button>
-</ion-card>
-
 </ion-content>
 
-<!-- Navbar -->
 <div class="navbar">
   <ion-tab-bar slot="bottom" class="custom-tab-bar">
-    <ion-tab-button [routerLink]="['/principal']" tab="schedule">
+    <ion-tab-button [routerLink]="['/dashboard-profe']" tab="schedule">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/clases-profesor']" tab="schedule">
+    <ion-tab-button [routerLink]="['/cursos-profe']" tab="schedule">
       <ion-icon name="book-outline"></ion-icon>
       <ion-label>Clases</ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/crear-clases']" tab="schedule">
+    <ion-tab-button [routerLink]="['/crear-curso']" tab="schedule">
       <ion-icon name="add-circle-outline"></ion-icon>
       <ion-label>Crear Clase</ion-label>
     </ion-tab-button>
     <ion-tab-button class="cerrar" [routerLink]="['/']" tab="about">
       <ion-icon name="arrow-back-circle-outline"></ion-icon>
-      <ion-label>Cerrar Sesión</ion-label>
+      <ion-label>Cerrar Sesion</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </div>

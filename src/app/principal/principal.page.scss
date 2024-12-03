@@ -100,6 +100,10 @@ ion-fab-button {
 .custom-tab-bar {
   --background: #052C53 ; 
   --color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 ion-card {

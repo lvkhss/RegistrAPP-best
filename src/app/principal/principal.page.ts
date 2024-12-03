@@ -1,62 +1,104 @@
 import { Component, OnInit } from '@angular/core';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController, NavController, LoadingController, ToastController } from '@ionic/angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, NavController } from '@ionic/angular';
-import * as QRCode from 'qrcode'; // Importamos la librería para generar códigos QR
+import { QrScannerService } from '../services/qr-scanner.service'; // Importa el servicio QrScannerService
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.page.html',
   styleUrls: ['./principal.page.scss'],
 })
-export class PrincipalPage implements OnInit {
+export class PrincipalPage  implements OnInit {
+  usuario: string = '';
+  isSupported = false;
 
-  username: string = "";
-  menuOpen: boolean = false;
-  selectedClass: string = '';
-  qrCodeData: string = '';  // Almacena los datos que se usarán para el código QR
-  qrCodeUrl: string = '';   // Almacena la URL del QR generado
+  constructor(
+    private readonly qrScannerService: QrScannerService,
+    private route: ActivatedRoute,
+    private alertController: AlertController,
+    private navCtrl: NavController,
+    private http: HttpClient,
+    private authService: AuthService,
+    private loadingController: LoadingController,
+    private toastController: ToastController
+  ) {}
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController) { }
-
-  ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.username = user.username || 'Invitado';
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.usuario = params['usuario'] ? params['usuario'] : 'Invitado';
+    });
+    this.checkBarcodeSupport();
   }
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+  async checkBarcodeSupport() {
+    const result = await BarcodeScanner.isSupported();
+    this.isSupported = result.supported;
   }
 
-  // Función para seleccionar una clase y generar el código QR
-  seleccionarClase(clase: string) {
-    this.selectedClass = clase;
-    this.qrCodeData = `Asistencia para la clase de ${clase}`; // Datos para el código QR
-    this.menuOpen = false; 
+  // Método para escanear un código QR y registrar asistencia
+  async scan(): Promise<void> {
+    try {
+      const barcodes = await this.qrScannerService.scan(); // Usa el servicio para escanear
 
-    // Llamamos a la función que generará el QR con los datos
-    this.generarCodigoQR(this.qrCodeData);
+      if (barcodes.length === 0) {
+        await this.showToast('No se detectaron códigos QR');
+        return;
+      }
 
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.username = user.username || 'Invitado';
+      // Procesa el primer código escaneado
+      const scanResult = barcodes[0];
+      if (scanResult) {
+        await this.registrarAsistencia(scanResult); // Registra la asistencia con el resultado escaneado
+      }
+    } catch (error) {
+      console.error('Error al escanear:', error);
+      await this.showToast('Error al escanear el código QR.');
+    }
   }
 
-  deseleccionarClase() {
-    this.selectedClass = '';
-    this.qrCodeData = '';
-    this.qrCodeUrl = ''; // Limpiamos el QR
+  // Función para registrar asistencia usando la API
+  async registrarAsistencia(code: string) {
+    const loading = await this.loadingController.create({
+      message: 'Validando asistencia...',
+      spinner: 'crescent',
+    });
+    await loading.present();
+
+    try {
+      const token = await this.authService.getToken();
+      if (!token) throw new Error('Token no encontrado. Inicia sesión nuevamente.');
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      });
+
+      // Realiza la solicitud POST a la API de PresenteProfesor para registrar la asistencia
+      await this.http.post(`https://www.presenteprofe.cl/api/v1/clases/${code}/asistencia`, {}, { headers }).toPromise();
+      await this.showToast('Asistencia registrada exitosamente');
+    } catch (error) {
+      console.error('Error al registrar asistencia:', error);
+      await this.showToast('Error al registrar asistencia: ' + ((error as any).message || error));
+    } finally {
+      await loading.dismiss();
+    }
+  }
+
+  // Función para mostrar un mensaje de Toast
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
   }
 
   logout() {
     localStorage.setItem('ingresado', 'false');
-    this.navCtrl.navigateRoot('/home'); 
-  }
-
-  // Función para generar el código QR
-  async generarCodigoQR(data: string) {
-    try {
-      this.qrCodeUrl = await QRCode.toDataURL(data); // Genera el QR como una URL de imagen
-    } catch (error) {
-      console.error('Error al generar el QR: ', error);
-    }
+    this.navCtrl.navigateRoot('/home');
   }
 }
