@@ -19,3 +19,5 @@
 3. Crear una nueva clase te lleva a un formulario donde deberas ingresar los datos de la nueva clase como: nombre, sigla, asignatura, sede, descripcion, al ingresar se almacenara en la base de datos.
 4. Al seleccionar el Boton cerrar sesion, volvera nuevamente al iniciar sesion, cerrando credenciales.
 
+#APK
+1. Para usar la APK en un dispositivo android debes descargar el APK ubicado en la carpeta https://github.com/lvkhss/RegistrAPP-best/tree/master/APK
